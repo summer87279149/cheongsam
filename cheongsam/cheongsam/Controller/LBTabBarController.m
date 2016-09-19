@@ -70,7 +70,6 @@
 #pragma mark - 初始化设置tabBar上面单个按钮的方法
 
 /**
- *  @author li bo, 16/05/10
  *
  *  设置单个tabBarButton
  *
@@ -109,8 +108,8 @@
 - (void)tabBarPlusBtnClick:(LBTabBar *)tabBar{
     ShopViewController *plusVC = [[ShopViewController alloc] init];
     plusVC.view.backgroundColor = [self randomColor];
-    LBNavigationController *navVc = [[LBNavigationController alloc] initWithRootViewController:plusVC];
-    [self presentViewController:navVc animated:YES completion:nil];
+    LBNavigationController *aaaa = [[LBNavigationController alloc] initWithRootViewController:plusVC];
+    [self presentViewController:aaaa animated:YES completion:nil];
 }
 
 - (UIColor *)randomColor{

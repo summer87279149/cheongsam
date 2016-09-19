@@ -16,8 +16,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setUpNav];
 }
+
+
+- (void)setUpNav
+{
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"header_back_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(pop)];
+    self.navigationItem.leftBarButtonItem = backItem;
+    
+}
+
+
+- (void)pop
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

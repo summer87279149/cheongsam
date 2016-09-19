@@ -10,13 +10,13 @@
 #define NavBarColor [UIColor colorWithRed:250/255.0 green:227/255.0 blue:111/255.0 alpha:1.0]
 @interface LBNavigationController ()
 
+
+
 @end
 
 @implementation LBNavigationController
 
-+ (void)load
-{
-
++ (void)load{
 
     UIBarButtonItem *item=[UIBarButtonItem appearanceWhenContainedIn:self, nil ];
     NSMutableDictionary *dic=[NSMutableDictionary dictionary];

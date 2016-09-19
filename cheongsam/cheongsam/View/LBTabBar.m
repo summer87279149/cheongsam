@@ -120,7 +120,7 @@
 
         //将当前tabbar的触摸点转换坐标系，转换到发布按钮的身上，生成一个新的点
         CGPoint newP = [self convertPoint:point toView:self.plusBtn];
-
+//        NSLog(@"转换的发布按钮的坐标是:%lf,%lf",newP.x,newP.y);
         //判断如果这个新的点是在发布按钮身上，那么处理点击事件最合适的view就是发布按钮
         if ( [self.plusBtn pointInside:newP withEvent:event]) {
             return self.plusBtn;

@@ -1,0 +1,12 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'cheongsam' do
+    pod 'AFNetworking'
+    pod 'SDCycleScrollView'
+    pod 'Masonry'
+    pod 'SDAutoLayout'
+    pod 'MBProgressHUD'
+    pod 'MJRefresh'
+end
+
