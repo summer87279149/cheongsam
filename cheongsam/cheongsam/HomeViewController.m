@@ -7,13 +7,12 @@
 //
 
 #import "ChinaQPTableViewController.h"
-#import "MJRefresh.h"
 #import "HomeCollectionViewCell.h"
 #import "OtherScrollImages.h"
 #import "HomeViewController.h"
 #import "TopScrollImagesView.h"
 #import "lastScrollImages.h"
-
+#import "ShowViewController.h"
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,BtnClickedDelegate>
 
 @property(nonatomic,strong) TopScrollImagesView *topImagesView;
@@ -49,8 +48,7 @@
             break;
         case 101:
         {
-            UIViewController *a = [[UIViewController alloc]init];
-            a.view.backgroundColor = [UIColor whiteColor];
+            ShowViewController *a = [[ShowViewController alloc]init];
             [self.navigationController pushViewController:a animated:YES];
         }
             break;

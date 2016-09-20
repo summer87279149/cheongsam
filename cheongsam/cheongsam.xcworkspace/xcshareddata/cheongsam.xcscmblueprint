@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C93363BF26E7BFD360777A075FA738B3E98C0220",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "4b773df9-da60-49a5-9b2b-43371828d181++8903" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C93363BF26E7BFD360777A075FA738B3E98C0220" : 0,
+    "4b773df9-da60-49a5-9b2b-43371828d181++8903" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1F992B88-36C9-49A1-BA6C-3527DC5836B6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C93363BF26E7BFD360777A075FA738B3E98C0220" : "QiPao\/",
+    "4b773df9-da60-49a5-9b2b-43371828d181++8903" : "QiPao\/cheongsam\/cheongsam\/Other\/Vendor\/FXBlurView\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "cheongsam",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "cheongsam\/cheongsam.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/101.200.174.143\/iOSNew",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4b773df9-da60-49a5-9b2b-43371828d181++8903"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/summer87279149\/cheongsam.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C93363BF26E7BFD360777A075FA738B3E98C0220"
+    }
+  ]
+}

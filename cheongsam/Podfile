@@ -8,5 +8,12 @@ target 'cheongsam' do
     pod 'SDAutoLayout'
     pod 'MBProgressHUD'
     pod 'MJRefresh'
+    pod 'WMPageController'
+    pod 'SDWebImage'
+    pod 'YYWebImage'
+    pod 'MJExtension'
+    pod 'UMengSocialCOM'
+    pod 'YYText'
+    pod 'ReactiveCocoa','2.5'
 end
 
