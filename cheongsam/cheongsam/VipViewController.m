@@ -7,17 +7,95 @@
 //
 
 #import "VipViewController.h"
-
-@interface VipViewController ()
-
+#import "OtherTableViewCell.h"
+#import "TopTableViewCell.h"
+@interface VipViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property(nonatomic,strong) UITableView *tableview;
 @end
 
 @implementation VipViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self createTableview];
 }
+-(void)createTableview{
+    self.tableview = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    [self.view addSubview:_tableview];
+    self.tableview.delegate=self;
+    self.tableview.dataSource = self;
+//    [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([TopTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"topCell"];
+//    [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([OtherTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"otherCell"];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row==0) {
+        return 150;
+    }
+    return 70;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 6;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    if (indexPath.row==0) {
+        static NSString *CellIdentifier = @"topCell";
+        BOOL nibsRegistered = NO;
+        if (!nibsRegistered) {
+            UINib *nib = [UINib nibWithNibName:NSStringFromClass([TopTableViewCell class]) bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+            nibsRegistered = YES;
+        }
+        TopTableViewCell *cell = (TopTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        static NSString *CellIdentifier = @"otherCell";
+        BOOL nibsRegistered = NO;
+        if (!nibsRegistered) {
+            UINib *nib = [UINib nibWithNibName:NSStringFromClass([OtherTableViewCell class]) bundle:nil];
+            [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+            nibsRegistered = YES;
+        }
+        OtherTableViewCell *cell = (OtherTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (indexPath.row == 1) {
+            cell.label.text = @"购物车";
+        }else if (indexPath.row == 2){
+            cell.label.text = @"我的订单";
+        }else if (indexPath.row == 3){
+            cell.label.text = @"店铺收藏";
+        }else if (indexPath.row == 4){
+            cell.label.text = @"商品收藏";
+        }else if (indexPath.row == 5){
+            cell.label.text = @"物流管理";
+        }
+        
+        return cell;
+    }
+    
+    
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

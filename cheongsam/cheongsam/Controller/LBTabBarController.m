@@ -9,6 +9,7 @@
 #import "ClassifyViewController.h"
 #import "ShopViewController.h"
 #import "FindViewController.h"
+#import "VipViewController.h"
 #import "LBTabBar.h"
 #import "UIImage+Image.h"
 
@@ -60,10 +61,10 @@
     ClassifyViewController *FishVC = [[ClassifyViewController alloc] init];
     [self setUpOneChildVcWithVc:FishVC Image:@"fish_normal" selectedImage:@"fish_highlight" title:@"分类"];
 
-    ShopViewController *MessageVC = [[ShopViewController alloc] init];
+    FindViewController *MessageVC = [[FindViewController alloc] init];
     [self setUpOneChildVcWithVc:MessageVC Image:@"message_normal" selectedImage:@"message_highlight" title:@"发现"];
 
-    FindViewController *MineVC = [[FindViewController alloc] init];
+    VipViewController *MineVC = [[VipViewController alloc] init];
     [self setUpOneChildVcWithVc:MineVC Image:@"account_normal" selectedImage:@"account_highlight" title:@"会员"];
 }
 

@@ -5,7 +5,8 @@
 //  Created by Admin on 16/9/13.
 //  Copyright © 2016年 Admin. All rights reserved.
 //
-
+#import "CompanyViewController.h"
+#import "QiPaoHuiViewController.h"
 #import "ChinaQPTableViewController.h"
 #import "HomeCollectionViewCell.h"
 #import "OtherScrollImages.h"
@@ -13,6 +14,7 @@
 #import "TopScrollImagesView.h"
 #import "lastScrollImages.h"
 #import "ShowViewController.h"
+#import "BrandViewController.h"
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,BtnClickedDelegate>
 
 @property(nonatomic,strong) TopScrollImagesView *topImagesView;
@@ -54,14 +56,14 @@
             break;
         case 102:
         {
-            UIViewController *a = [[UIViewController alloc]init];
+            BrandViewController *a = [[BrandViewController alloc]init];
             a.view.backgroundColor = [UIColor whiteColor];
             [self.navigationController pushViewController:a animated:YES];
         }
             break;
         case 103:
         {
-            UIViewController *a = [[UIViewController alloc]init];
+            QiPaoHuiViewController *a = [[QiPaoHuiViewController alloc]init];
             a.view.backgroundColor = [UIColor whiteColor];
             [self.navigationController pushViewController:a animated:YES];
         }
@@ -148,7 +150,7 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 6;
+    return 4;
 }
 
 - (CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -166,9 +168,7 @@
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;
-    
     if (kind == UICollectionElementKindSectionHeader && 0 == indexPath.section ){
-        
             self.topImagesView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeadView" forIndexPath:indexPath];
             reusableview = self.topImagesView;
      
@@ -182,7 +182,13 @@
     return reusableview;
 }
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        CompanyViewController * vc =[[CompanyViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+}
 
 #pragma mark ==============================
 

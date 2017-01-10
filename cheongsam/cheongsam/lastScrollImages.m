@@ -28,7 +28,7 @@
         /** 设置占位图*/
         _WYscrollview.placeholderImage = [UIImage imageNamed:@"placeholderImage"];
         /** 获取网络图片的index*/
-        self.WYscrollview.netDelagate = self;
+        
         /** 添加到当前View上*/
         [self addSubview:_WYscrollview];
     }

@@ -14,66 +14,40 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - HMSegmentedControl (1.5.2)
   - Masonry (1.0.1)
   - MBProgressHUD (1.0.0)
-  - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - ReactiveCocoa (2.5):
-    - ReactiveCocoa/UI (= 2.5)
-  - ReactiveCocoa/Core (2.5):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.5)
-  - ReactiveCocoa/UI (2.5):
-    - ReactiveCocoa/Core
   - SDAutoLayout (2.1.7)
   - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
-  - UMengSocialCOM (5.2.1)
   - WMPageController (1.8.9)
-  - YYCache (1.0.3)
-  - YYImage (1.0.3):
-    - YYImage/Core (= 1.0.3)
-  - YYImage/Core (1.0.3)
-  - YYText (1.0.5)
-  - YYWebImage (1.0.4):
-    - YYCache
-    - YYImage
 
 DEPENDENCIES:
   - AFNetworking
+  - HMSegmentedControl
   - Masonry
   - MBProgressHUD
-  - MJExtension
   - MJRefresh
-  - ReactiveCocoa (= 2.5)
   - SDAutoLayout
   - SDCycleScrollView
   - SDWebImage
-  - UMengSocialCOM
   - WMPageController
-  - YYText
-  - YYWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
-  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
   WMPageController: fb2d7634ec3885fdc6ec30264e9effb8f67033c9
-  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
-  YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
-  YYText: ac09660c9ccd9b817f409a20caa6f5587444d2ae
-  YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: 73e9d1b07dc86dedc50fa3ce5910d27c3ed269ac
+PODFILE CHECKSUM: 314fde1033ded7bde38d747643729421e4d2175f
 
 COCOAPODS: 1.0.1

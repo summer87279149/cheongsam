@@ -7,19 +7,67 @@
 //
 
 #import "ShopViewController.h"
-
-@interface ShopViewController ()
-
+#import "ShopTableViewCell.h"
+@interface ShopViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong)UITableView *tableview;
 @end
 
 @implementation ShopViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"商铺";
     [self setUpNav];
+    [self creatRefresh];
+}
+
+-(UITableView*)tableview{
+    if (!_tableview) {
+        CGRect rect = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
+        _tableview = [[UITableView alloc]initWithFrame:rect style:UITableViewStylePlain];
+        [self.view addSubview:_tableview];
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        
+    }
+    return _tableview;
+}
+-(void)creatRefresh{
+    __weak typeof(self) weakSelf = self;
+    self.tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSLog(@"下拉刷新");
+            [weakSelf.tableview.mj_header endRefreshing];
+        });
+    }];
+}
+#pragma mark- dalegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 150;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"Cell";
+    BOOL nibsRegistered = NO;
+    if (!nibsRegistered) {
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass([ShopTableViewCell class]) bundle:nil];
+        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
+        nibsRegistered = YES;
+    }
+    ShopTableViewCell *cell = (ShopTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+    
 }
 
 
+
+
+
+#pragma mark-navigation backBtn
 - (void)setUpNav
 {
     

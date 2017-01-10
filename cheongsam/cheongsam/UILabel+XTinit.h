@@ -17,7 +17,6 @@ typedef enum {
 @interface UILabel (XTinit)
 
 +(id)sharedWithFont:(CGFloat )font andColor:(UIColor *)color andAnligment:(XTAliment) XTAliment andBackgroundColor:(UIColor*)BGColor;
-
 + (CGFloat)getHeightByWidth:(CGFloat)width title:(NSString *)title font:(UIFont*)font;
 
 + (CGFloat)getWidthWithTitle:(NSString *)title font:(UIFont *)font;
