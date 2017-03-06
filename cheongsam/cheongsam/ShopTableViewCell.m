@@ -12,8 +12,27 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(shopTap)];
+    self.shopImage.userInteractionEnabled = YES;
+    [self.shopImage addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(QPTap)];
+    self.QPimageView.userInteractionEnabled = YES;
+    [self.QPimageView addGestureRecognizer:tap2];
+
+
+
+
 }
+-(void)shopTap{
+    [self.shopImageTapDelegate sendNext:self];
+}
+
+
+-(void)QPTap{
+    [self.QPimageViewDelegate sendNext:self];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

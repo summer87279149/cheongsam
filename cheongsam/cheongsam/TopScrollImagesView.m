@@ -26,7 +26,7 @@
         CGRect re = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 200);
         _WYNetScrollView = [SDCycleScrollView cycleScrollViewWithFrame:re imageNamesGroup:_NetImageArray];
         /** 设置占位图*/
-//        _WYNetScrollView.placeholderImage = [UIImage imageNamed:@"placeholderImage"];
+        _WYNetScrollView.placeholderImage = [UIImage imageNamed:@"placeholderImage"];
         /** 获取网络图片的index*/
         self.WYNetScrollView.delegate = self;
         /** 添加到当前View上*/
@@ -34,7 +34,7 @@
         
         
         for (int i = 0; i<4; ++i) {
-            CGRect rect = CGRectMake(i*kScreenWidth/4, 210, kScreenWidth/4, 80);
+            CGRect rect = CGRectMake(i*kScreenWidth/4, 230, kScreenWidth/4, 80);
             NSString *ImaName = [NSString stringWithFormat:@"%d",i];
             NSArray * titles = @[@"中国旗袍",@"秀场",@"品牌馆",@"旗袍会"];
             FourBtns *btn = [[FourBtns alloc]initWithFrame:rect andImage:[UIImage imageNamed:ImaName] andTitle:titles[i]];
@@ -42,7 +42,9 @@
             [btn addTarget:self.delegate action:@selector(FourBtnClickedAt:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:btn];
         }
-        
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(15, 315, kScreenWidth, 30)];
+        label.text = @"今日商家";
+        [self addSubview:label];
         
     }
     return self;

@@ -5,6 +5,7 @@
 //  Created by Admin on 16/9/13.
 //  Copyright © 2016年 Admin. All rights reserved.
 //
+#import "BuyViewController.h"
 #import "CompanyViewController.h"
 #import "QiPaoHuiViewController.h"
 #import "ChinaQPTableViewController.h"
@@ -12,16 +13,15 @@
 #import "OtherScrollImages.h"
 #import "HomeViewController.h"
 #import "TopScrollImagesView.h"
-#import "lastScrollImages.h"
 #import "ShowViewController.h"
 #import "BrandViewController.h"
+#import "AllViewController.h"
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,BtnClickedDelegate>
 
 @property(nonatomic,strong) TopScrollImagesView *topImagesView;
 
 @property(nonatomic,strong) OtherScrollImages *otherImgaesView;
 
-@property(nonatomic,strong) lastScrollImages *lastImages;
 
 @property(nonatomic,strong) UICollectionView *collectionView;
 
@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    _otherImgaesView = [[OtherScrollImages alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
     [self createCollectionView];
     [self creatRefresh];
 }
@@ -50,7 +51,7 @@
             break;
         case 101:
         {
-            ShowViewController *a = [[ShowViewController alloc]init];
+            AllViewController *a = [[AllViewController alloc]init];
             [self.navigationController pushViewController:a animated:YES];
         }
             break;
@@ -87,19 +88,10 @@
 -(OtherScrollImages *)otherImgaesView{
     if (!_otherImgaesView) {
         _otherImgaesView = [[OtherScrollImages alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
-        
     }
     return _otherImgaesView;
 }
 
-
--(lastScrollImages *)lastImages{
-    if (!_lastImages) {
-        _lastImages = [[lastScrollImages alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
-        
-    }
-    return _lastImages;
-}
 
 #pragma mark 下拉刷新
 
@@ -120,6 +112,7 @@
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44)collectionViewLayout:layout];
+//        _collectionView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10);
         _collectionView.delegate = self;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
@@ -130,22 +123,22 @@
     
         [_collectionView registerClass:[self.otherImgaesView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"otherView"];
     
-        [_collectionView registerClass:[self.lastImages class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"lastView"];
-    
+//    [_collectionView registerClass:[self.otherScrollView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"otherScrollView"];
+ 
         [self.view addSubview:_collectionView];
         _collectionView.showsVerticalScrollIndicator = NO;
     
 }
 #pragma mark delegate and datasource
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 3;
+    return 2;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
 //    cell.backgroundColor = [UIColor blueColor];
     cell.Image.image = [UIImage imageNamed:@"测试图片"];
-    cell.title.text = @"推荐旗袍\n青玉案";
+    cell.title.text = @"商家名或商品名";
     return cell;
 }
 
@@ -155,14 +148,20 @@
 
 - (CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    return CGSizeMake(kScreenWidth/2, kScreenWidth/2);
+    return CGSizeMake(kScreenWidth/2-10, kScreenWidth/2-10);
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(5, 5, 5, 5);
+}
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return CGSizeMake(kScreenWidth, 290);
+        return CGSizeMake(kScreenWidth, 330);
+    }else if(section == 1){
+        return CGSizeMake(kScreenWidth, 200);
     }
-    return CGSizeMake(kScreenWidth, 200);
+    return CGSizeMake(kScreenWidth, 30);
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -173,11 +172,13 @@
             reusableview = self.topImagesView;
      
     }else if(kind == UICollectionElementKindSectionHeader && 1 == indexPath.section){
+//        self.otherScrollView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"otherScrollView" forIndexPath:indexPath];
+//        reusableview = _otherScrollView;
             self.otherImgaesView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"otherView" forIndexPath:indexPath];
-            reusableview = _otherImgaesView;
+            reusableview = self.otherImgaesView;
+        
     }else{
-            self.lastImages = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"lastView" forIndexPath:indexPath];
-            reusableview = _lastImages;
+        
     }
     return reusableview;
 }
@@ -187,13 +188,17 @@
         CompanyViewController * vc =[[CompanyViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (indexPath.section == 1) {
+        BuyViewController *vc = [[BuyViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 }
 
 #pragma mark ==============================
 
 -(void)viewWillAppear:(BOOL)animated{
-//    self.navigationController.navigationBar.hidden = YES;
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveNotification:) name:@"selectImageAtIndex" object:nil];
 }
 
@@ -211,7 +216,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

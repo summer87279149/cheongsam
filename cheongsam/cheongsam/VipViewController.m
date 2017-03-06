@@ -5,7 +5,9 @@
 //  Created by Admin on 16/9/13.
 //  Copyright © 2016年 Admin. All rights reserved.
 //
-
+#import "OrderTableViewController.h"
+#import "CommodityCollectTableViewController.h"
+#import "ShopCollectTableViewController.h"
 #import "VipViewController.h"
 #import "OtherTableViewCell.h"
 #import "TopTableViewCell.h"
@@ -24,6 +26,7 @@
     [self.view addSubview:_tableview];
     self.tableview.delegate=self;
     self.tableview.dataSource = self;
+    self.tableview.tableFooterView = [UIView new];
 //    [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([TopTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"topCell"];
 //    [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([OtherTableViewCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"otherCell"];
 }
@@ -37,7 +40,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return 5;
 }
 
 
@@ -73,20 +76,49 @@
             cell.label.text = @"店铺收藏";
         }else if (indexPath.row == 4){
             cell.label.text = @"商品收藏";
-        }else if (indexPath.row == 5){
-            cell.label.text = @"物流管理";
         }
         
         return cell;
     }
     
-    
-
-    
 }
 
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+           
+            
+        }
+            break;
+        case 3:
+        {
+           
+            ShopCollectTableViewController*vc = [[ShopCollectTableViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 4:
+        {
+            CommodityCollectTableViewController *vc= [[CommodityCollectTableViewController alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
 
 
 

@@ -5,6 +5,7 @@
 //  Created by Admin on 16/9/13.
 //  Copyright © 2016年 Admin. All rights reserved.
 //
+#import "ClassifyDetailViewController.h"
 #import "CLassiFyCollectionViewCell.h"
 #import "ClassifyViewController.h"
 @interface ClassifyViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -54,7 +55,24 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CLassiFyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CLassiCell" forIndexPath:indexPath];
     cell.image.image = [UIImage imageNamed:@"测试图片"];
-    cell.title.text = @"古典旗袍";
+    
+    switch (indexPath.row) {
+        case 0:
+        cell.title.text = @"旗袍类别";
+            break;
+        case 1:
+        cell.title.text = @"例如：";
+            break;
+        case 2:
+       cell.title.text = @"古典旗袍";
+            break;
+        case 3:
+          cell.title.text = @"现代旗袍";
+            break;
+        default:
+            cell.title.text = @"⬆️上是类别图片";
+            break;
+    }
     return cell;
 }
 
@@ -67,7 +85,11 @@
 }
 
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ClassifyDetailViewController *vc = [[ClassifyDetailViewController alloc]init];
+    vc.navTitle = @"分类详情";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 

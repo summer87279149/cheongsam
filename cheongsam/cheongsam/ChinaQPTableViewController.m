@@ -8,6 +8,7 @@
 
 #import "ChinaQPTableViewController.h"
 #import "ChinaQpTableViewCell.h"
+#import "WebViewController.h"
 @interface ChinaQPTableViewController ()
 
 @end
@@ -51,10 +52,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.label.text = @"暂无网页,请制作网页";
-    [hud hideAnimated:YES afterDelay:1];
+    [Common showHUDWith:@"暂无网页，请制作网页" to:self.view];
+    WebViewController *webVC = [[WebViewController alloc]initWithUrlString:@"http://www.baidu.com"];
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 

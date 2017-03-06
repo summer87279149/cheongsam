@@ -7,7 +7,7 @@
 //
 
 #import "BrandViewController.h"
-#import "AllViewController.h"
+#import "AllBrandViewController.h"
 @interface BrandViewController ()<WMPageControllerDelegate,WMMenuViewDataSource>
 
 @end
@@ -38,13 +38,13 @@
 //设置对应的viewcontroller
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     if (index == 0) {
-        return [[AllViewController alloc ]init];
+        return [[AllBrandViewController alloc ]initWithType:CheongsamBrandAll];
     }else if(index ==1 ){
-        return [[AllViewController alloc ]init];
+        return [[AllBrandViewController alloc ]initWithType:CheongsamBrandRecommand];
     }else if(index ==2 ){
-        return [[AllViewController alloc ]init];
+        return [[AllBrandViewController alloc ]initWithType:CheongsamBrandDomestic];;
     }
-    return [[AllViewController alloc ]init];
+    return [[AllBrandViewController alloc ]initWithType:CheongsamBrandInternational];;
 }
 
 

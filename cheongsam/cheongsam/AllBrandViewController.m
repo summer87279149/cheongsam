@@ -8,19 +8,58 @@
 
 #import "AllBrandViewController.h"
 #import "ShowCollectionViewCell.h"
-@interface AllBrandViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
-
+@interface AllBrandViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSMutableArray *cellArr;
+}
 @property(nonatomic,strong) UICollectionView *collectionView;
 
 @end
 
 @implementation AllBrandViewController
 
+- (instancetype)initWithType:(CheongsamBrand)CheongsamBrandType
+{
+    self = [super init];
+    if (self) {
+        self.cheongsamBrandType = CheongsamBrandType;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self requestData];
     [self createCollectionView];
     [self creatRefresh];
 }
+
+-(void)requestData{
+    switch (self.cheongsamBrandType) {
+            
+        case CheongsamBrandAll:{
+            [RequestManager testRequest:^(id response) {
+                NSLog(@"打印网络请求 %@",response);
+            } failure:^(id error) {
+                
+            }];
+        }
+            break;
+        case CheongsamBrandRecommand:{
+            
+        }
+            break;
+        case CheongsamBrandDomestic:{
+            
+        }
+            break;
+        case CheongsamBrandInternational:{
+            
+        }
+            break;
+    }
+}
+
 -(void)createCollectionView{
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -34,6 +73,9 @@
     [_collectionView registerNib:[UINib nibWithNibName:@"ShowCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CELL"];
     [self.view addSubview:_collectionView];
     _collectionView.showsVerticalScrollIndicator = NO;
+    
+    _collectionView.emptyDataSetSource = self;
+    _collectionView.emptyDataSetDelegate = self;
     
 }
 -(void)creatRefresh{
@@ -54,7 +96,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ShowCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
     cell.Image.image = [UIImage imageNamed:@"测试图片"];
-    cell.title.text = @"推荐旗袍青玉案";
+    cell.title.text = @"推荐旗袍青玉案1111111";
     return cell;
 }
 
@@ -65,19 +107,64 @@
 - (CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     return CGSizeMake(kScreenWidth/2-5, kScreenWidth/2);
 }
+
+#pragma mark - DZNEmptyDataSetSource
+
+
+
+-(NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = @"没有数据哦";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"此处还没有品牌馆入驻哦";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+//为自定义UIView
+//- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView
+//{
+//    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    [activityView startAnimating];
+//    return activityView;
+//}
+
+
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view
+{
+    
+    NSLog(@"点击了空数据");
+}
+
+
+
+
+
+
+
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

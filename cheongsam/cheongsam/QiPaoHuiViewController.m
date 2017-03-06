@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     
-    self.title = @"品牌馆";
+    self.title = @"旗袍会";
     self.menuHeight = 44; //导航栏高度
     self.menuItemWidth = 100; //每个 MenuItem 的宽度
     self.menuBGColor = [UIColor whiteColor];
@@ -40,13 +40,13 @@
 //设置对应的viewcontroller
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     if (index == 0) {
-        return [[QiPaoTableViewViewController alloc ]init];
+        return [[QiPaoTableViewViewController alloc ]initWithType:BandAddressAll];
     }else if(index ==1 ){
-        return [[QiPaoTableViewViewController alloc ]init];
+        return [[QiPaoTableViewViewController alloc ]initWithType:BandAddressBeijing];
     }else if(index ==2 ){
-        return [[QiPaoTableViewViewController alloc ]init];
+        return [[QiPaoTableViewViewController alloc ]initWithType:BandAddressShanghai];
     }
-    return [[QiPaoTableViewViewController alloc ]init];
+    return [[QiPaoTableViewViewController alloc ]initWithType:BandAddressGuangzhou];
 }
 
 

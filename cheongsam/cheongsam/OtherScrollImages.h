@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "WYScrollView.h"
-
+#import "SDCycleScrollView.h"
+//项目修改后此类名未改，该类实际是首页UICollectionView section＝1的headerView
 @interface OtherScrollImages : UICollectionReusableView
-
 @property(nonatomic,copy)NSMutableArray *NetImageArray;
 
-
-@property(nonatomic,strong)WYScrollView *WYscrollview;
+@property(nonatomic,strong)SDCycleScrollView* WYNetScrollView;
 @end

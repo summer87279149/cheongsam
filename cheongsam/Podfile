@@ -11,5 +11,12 @@ target 'cheongsam' do
     pod 'WMPageController'
     pod 'SDWebImage'
     pod 'HMSegmentedControl'
+    pod 'DZNEmptyDataSet'
+    pod 'NJKWebViewProgress'
+    pod 'FlatUIKit'
+    pod 'RETableViewManager', '~> 1.6'
+    pod 'JHUD'
+    pod 'MJExtension'
+    pod 'ReactiveCocoa', '2.5'
 end
 

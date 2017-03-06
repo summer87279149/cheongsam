@@ -27,7 +27,7 @@
         [self.image mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.mas_left).offset(10);
             make.top.mas_equalTo(self.mas_top);
-            make.width.mas_equalTo(self.mas_width).offset(-20);
+            make.width.mas_equalTo(self.mas_width).offset(-30);
             make.height.mas_equalTo(60);
         }];
         [self.Label mas_makeConstraints:^(MASConstraintMaker *make) {

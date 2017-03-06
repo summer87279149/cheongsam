@@ -12,6 +12,9 @@
 #define k_scaleHeight kScreenHeight/480.0
 #define kScreenWidth        [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight       [[UIScreen mainScreen] bounds].size.height
+#define URLWITHSTRING(STRING)       [NSURL URLWithString:[NSString stringWithFormat:@"%@",STRING]]
+#define SHOWHUD      [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+#define HIDEHUD        [MBProgressHUD hideHUDForView:self.view animated:YES];
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #define isPrintLog  1   // 仅当  isPrintLog 值是1的时候才输出日志
@@ -42,27 +45,15 @@ __LINE__,               \
 #import "UIView+lineView.h"
 #import "Masonry.h"
 #import "MJRefresh.h"
+
 #import "UIImageView+WebCache.h"
-
-
-//
-//#import "NHUtils.h"
-//#import "NHCommonConstant.h"
-//#import "NHDefaultHeader.h"
-//#import "UIView+Frame.h"
-//#import "NHCommonAPIConstant.h"
-//#import "XTBaseImageView.h"
-//#import "UINavigationItem+NHAddition.h"
-//#import "NSNotificationCenter+Addition.h"
-//#import "NSDate+Addition.h"
-//#import "NSDictionary+Addition.h"
-//#import "UIButton+Addition.h"
-//#import "UILabel+Addition.h"
-//#import "UIView+Layer.h"
-//#import "UIView+Frame.h"
-//#import "NSString+Addition.h"
-
-
-
-
+#import "Common.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "XTCommonAPIConstant.h"
+#import "RequestManager.h"
+#import "UIImageView+WebCache.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "JHUD.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #endif /* PrefixHeader_pch */

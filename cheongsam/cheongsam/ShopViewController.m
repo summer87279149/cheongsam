@@ -5,9 +5,10 @@
 //  Created by Admin on 16/9/13.
 //  Copyright © 2016年 Admin. All rights reserved.
 //
-
+#import "CompanyViewController.h"
 #import "ShopViewController.h"
 #import "ShopTableViewCell.h"
+#import "BuyViewController.h"
 @interface ShopViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableview;
 @end
@@ -59,6 +60,20 @@
     }
     ShopTableViewCell *cell = (ShopTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.shopImageTapDelegate = [RACSubject subject];
+    @weakify(self);
+    [cell.shopImageTapDelegate subscribeNext:^(id x) {
+        @strongify(self);
+        CompanyViewController *vc = [[CompanyViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    
+    cell.QPimageViewDelegate = [RACSubject subject];
+    [cell.QPimageViewDelegate subscribeNext:^(id x) {
+        @strongify(self);
+        BuyViewController *vc= [[BuyViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     return cell;
     
 }
